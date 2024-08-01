@@ -9,17 +9,6 @@
         <!-- Favicons -->
         <link rel="icon" href="" sizes="32x32" type="image/png">
         <link rel="icon" href="" sizes="16x16" type="image/png">
-        <link rel="icon" href=""><!doctype html>
-    <html dir="ltr" lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <meta name="description" content="">
-        <title></title>
-
-        <!-- Favicons -->
-        <link rel="icon" href="" sizes="32x32" type="image/png">
-        <link rel="icon" href="" sizes="16x16" type="image/png">
         <link rel="icon" href="">
 
         <!-- Styles -->
@@ -105,6 +94,22 @@
         .gradient-button:active {
             transform: scale(0.95); /* Slightly shrink button when clicked */
         }
+         #links-container {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            border-radius: 10px;
+             border: 1px solid #888;
+        }
+
+        /* Ensure each link appears on a new line */
+        #links-container a {
+            padding: 5px;
+                        color: white;
+            display: block; /* Make each link a block-level element */
+            margin-bottom: 10px; /* Optional: Add spacing between links */
+            color: #007bff; /* Optional: Link color */
+            text-decoration: none; /* Optional: Remove underline from links */
+        }
     </style>
         </style>
     </head>
@@ -113,14 +118,19 @@
 <!-- The popup -->
 <div id="myPopup" class="popup">
     <div class="popup-content">
-        <p style="color:white;">Вы всегда можете найти нас  по этим 4-м ссылкам, сохраните эти ссылки в надежном месте</p>
-        <br/>
-        <p style="color:white;">https://stm24.crypto</p>
-        <p style="color:white;">https://stm24.ton</p>
-        <p style="color:white;">https://ipfs.io/ipfs/QmXqtMCH4ZVjmjXjfCwErcjdzoKKYYnXsJ3hyFiWnmzb4i/</p>
-        <p style="color:white;">https://stm24.biz</p>
-<br/>
-        <button class="close-btn gradient-button" onclick="closePopup()">Ознакомлен</button>
+
+       <b> <a style="color:white;">Вы всегда можете найти нас  по этим 4-м ссылкам, сохраните эти ссылки в надежном месте</a></b>
+
+        <div id="links-container"> 
+        <a style="color:white;" href="https://stm24.crypto">https://stm24.crypto</a>
+        <a style="color:white;" href="https://stm24.ton">https://stm24.ton</a>
+        <a style="color:white;" href="https://ipfs.io/ipfs/QmXqtMCH4ZVjmjXjfCwErcjdzoKKYYnXsJ3hyFiWnmzb4i">https://ipfs.io/ipfs/QmXqtMCH4ZVjmjXjfCwErcjdzoKKYYnXsJ3hyFiWnmzb4i/</a>
+        <a style="color:white;" href="https://stm24.biz">https://stm24.biz</a>
+<a style="color:white;" href="http://t.me/santamuerta_bot/santamuerta">http://t.me/santamuerta_bot/santamuerta</a>
+    </div><div>
+        </div>
+
+        <button class="close-btn gradient-button" onclick="closePopup()">Ознакомлен</button><button style="margin-left: 5px" class="close-btn gradient-button"  id="copy-links">Копировать ссылки</button>
     </div>
 </div>
 
@@ -142,6 +152,30 @@
     window.onload = function() {
         openPopup();
     };
+    document.getElementById('copy-links').addEventListener('click', () => {
+    // Get the div containing the links
+    const linksContainer = document.getElementById('links-container');
+    
+    // Extract all the links
+    const links = linksContainer.querySelectorAll('a');
+    
+    // Create a temporary textarea element to hold the links
+    const textarea = document.createElement('textarea');
+    document.body.appendChild(textarea);
+    
+    // Populate the textarea with the links
+    textarea.value = Array.from(links).map(link => link.href).join('\n');
+    
+    // Select and copy the content
+    textarea.select();
+    document.execCommand('copy');
+    
+    // Clean up the temporary textarea
+    document.body.removeChild(textarea);
+    
+    alert('Links copied to clipboard!');
+});
+
 </script>
         <div class="main content-wrapper">
             <aside class="column__left">
@@ -266,270 +300,6 @@
                                 </span>
                                 <span class="name">
                                     STM24.biz
-                                </span>
-                            </a>
-                        </div>
-                        <div class="column__right-nav_item --hexagon">
-                            <a href="#">
-                                <span class="logo">
-                                    <img src="assets/img/ss.png" alt="">
-                                </span>
-                                <span class="name">
-                                    SS
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-        </div>
-    </body>
-</html>
-
-        <!-- Styles -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-        <link href="assets/styles/styles.css" rel="stylesheet">
-        <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: url('back1.png') center top; /* Set background color to orange */
-                    background-position: center top;
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    background-color: black;
-                    transition: filter 0.3s; /* Smooth transition for blur effect */
-        }
-       .popup {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 2; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-        }
-        /* Popup content */
-        .popup-content {
-            background: linear-gradient(135deg, purple, darkblue); /* Gradient background */
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-            position: relative;
-            border-radius: 15px; /* Rounded edges */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better visual effect */
-            color: white; /* Text color */
-            z-index: 3; /* Ensure popup content is above the blur effect */
-        }
-        /* Close button */
-        .close-btn {
-            background-color: #f44336;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .close-btn:hover {
-            background-color: #d32f2f;
-        }
-         .content-wrapper {
-            transition: filter 0.3s; /* Smooth transition for blur effect */
-        }
-         .gradient-button {
-            background: linear-gradient(135deg, green, darkblue); /* Gradient background */
-            border: none;
-            color: white;
-            padding: 15px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            border-radius: 8px; /* Rounded edges */
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
-            transition: background 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-        }
-        .gradient-button:hover {
-            background: linear-gradient(135deg, darkblue, green); /* Inverted gradient on hover */
-            transform: scale(1.05); /* Slightly enlarge button on hover */
-        }
-        .gradient-button:active {
-            transform: scale(0.95); /* Slightly shrink button when clicked */
-        }
-    </style>
-        </style>
-    </head>
-    <body>
-        <!-- The popup -->
-<!-- The popup -->
-<div id="myPopup" class="popup">
-    <div class="popup-content">
-        <p style="color:white;">Вы всегда можете найти нас  по этим 4-м ссылкам, сохраните эти ссылки в надежном месте</p>
-        <br/>
-        <p style="color:white;">https://stm24.crypto</p>
-        <p style="color:white;">https://stm24.ton</p>
-        <p style="color:white;">https://ipfs.io/ipfs/QmXqtMCH4ZVjmjXjfCwErcjdzoKKYYnXsJ3hyFiWnmzb4i/</p>
-        <p style="color:white;">https://stm24.biz</p>
-<br/>
-        <button class="close-btn gradient-button" onclick="closePopup()">Ознакомлен</button>
-    </div>
-</div>
-
-
-<!-- Button to open the popup -->
-
-<script>
-    function openPopup() {
-        document.getElementById("myPopup").style.display = "block";
-        document.querySelector(".content-wrapper").style.filter = "blur(5px)"; // Apply blur to the content-wrapper
-    }
-
-    function closePopup() {
-        document.getElementById("myPopup").style.display = "none";
-        document.querySelector(".content-wrapper").style.filter = "none"; // Remove blur from the content-wrapper
-    }
-
-    // Show the popup when the page loads
-    window.onload = function() {
-        openPopup();
-    };
-</script>
-        <div class="main content-wrapper">
-            <aside class="column__left">
-                <div class="column__left-nav">
-                    <div class="column__left-nav_item">
-                        <a href="https://t.me/+88801795264">
-                            Оператор Кавказ
-                        </a>
-                    </div>
-                    <div class="column__left-nav_item">
-                        <a href="https://t.me/SANTAMUR_KBR_BOT">
-                            Бот Кавказ
-                        </a>
-                    </div>
-                    <div class="column__left-nav_item">
-                        <a href="https://t.me/+meOnBmuAMsg3MjUx">
-                            Канал Кавказ
-                        </a>
-                    </div>
-                    <div class="column__left-nav_item">
-                        <a href="https://t.me/STMsupp">
-                            Оператор центр
-                        </a>
-                    </div>
-                    <div class="column__left-nav_item">
-                        <a href="https://t.me/MRT_Kras_kray_bot">
-                            Бот центр
-                        </a>
-                    </div>
-                    <div class="column__left-nav_item">
-                        <a href="https://t.me/+ggE9_-uc-Og3ZTlk">
-                            Чат центр/Юг
-                        </a>
-                    </div>
-                    <div class="column__left-nav_item">
-                        <a href="https://t.me/+zZAgnlFdLJJiYmRk">
-                            Канал цент/Юг
-                        </a>
-                    </div>
-                    <div class="column__left-nav_item">
-                        <a href="https://t.me/+zZAgnlFdLJJiYmRk">
-                            Работа с нами
-                        </a>
-                    </div>
-                </div>
-            </aside>
-            <aside class="column__right">
-                <div class="column__right-nav">
-                    <div class="column__right-nav_title">Домены Крипто</div>
-                    <div class="column__right-nav_subtitle">Oткрыть в браузере</div>
-                    <div class="column__right-nav_list">
-                        <div class="column__right-nav_item">
-                            <a href="#">
-                                <span class="logo">
-                                    <img src="assets/img/opera.svg" alt="">
-                                </span>
-                                <span class="name">
-                                    Opera
-                                </span>
-                            </a>
-                        </div>
-                        <div class="column__right-nav_item">
-                            <a href="#">
-                                <span class="logo">
-                                    <img src="assets/img/brave.svg" alt="">
-                                </span>
-                                <span class="name">
-                                    Brave
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="column__right-nav_subtitle">Прямые ссылки</div>
-                    <div class="column__right-nav_list">
-                        <div class="column__right-nav_item">
-                            <a href="#">
-                                <span class="logo">
-                                    <img src="assets/img/chrome.svg" alt="">
-                                </span>
-                                <span class="name">
-                                    Chrome
-                                </span>
-                            </a>
-                        </div>
-                        <div class="column__right-nav_item">
-                            <a href="#">
-                                <span class="logo">
-                                    <img src="assets/img/firefox.svg" alt="">
-                                </span>
-                                <span class="name">
-                                    Firefox
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="column__right-nav_subtitle"></div>
-                    <div class="column__right-nav_list --gap-10">
-                        <div class="column__right-nav_item --hexagon">
-                            <a href="#">
-                                <span class="logo">
-                                    <img src="assets/img/crypto.png" alt="">
-                                </span>
-                                <span class="name">
-                                    Crypto
-                                </span>
-                            </a>
-                        </div>
-                        <div class="column__right-nav_item --hexagon">
-                            <a href="#">
-                                <span class="logo">
-                                    <img src="assets/img/ton.png" alt="">
-                                </span>
-                                <span class="name">
-                                    TON
-                                </span>
-                            </a>
-                        </div>
-                        <div class="column__right-nav_item --hexagon">
-                            <a href="#">
-                                <span class="logo">
-                                    <img src="assets/img/biz.png" alt="">
-                                </span>
-                                <span class="name">
-                                    BIZ
                                 </span>
                             </a>
                         </div>
