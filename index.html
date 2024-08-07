@@ -112,11 +112,40 @@
             color: #007bff; /* Optional: Link color */
             text-decoration: none; /* Optional: Remove underline from links */
         }
+                    header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            background-color: transparent; /* Example background color */
+        }
+
+        .logo-container {
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            width: 150px; /* Adjust the size as needed */
+        }
+
+        @media only screen and (max-width: 600px) {
+            .logo {
+                width: 100px; /* Adjust the size for mobile view */
+            }
+        }
     </style>
         </style>
     </head>
     <body>
         <!-- The popup -->
+         <header>
+        <div class="logo-container">
+            <img src="n22.png" alt="Logo" class="logo">
+        </div>
+    </header>
 <!-- The popup -->
 <div id="myPopup" class="popup">
     <div class="popup-content">
